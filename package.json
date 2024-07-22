@@ -1,0 +1,24 @@
+{
+  "name": "express_postgres",
+  "version": "1.0.0",
+  "description": "\"# Prisma-PostgresQL-Node.js-Express\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamalahmed3265/Prisma-PostgresQL-Node.js-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gamalahmed3265/Prisma-PostgresQL-Node.js-Express/issues"
+  },
+  "homepage": "https://github.com/gamalahmed3265/Prisma-PostgresQL-Node.js-Express#readme",
+  "dependencies": {
+    "@prisma/client": "^5.17.0"
+  }
+}
