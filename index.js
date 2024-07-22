@@ -1,7 +1,13 @@
-const express=require("express");
-const app=express()
+import express from "express";
+import { PrismaClient } from "@prisma/client";
+import dotenv from "dotenv";
 
-const port=3000
+
+const app=express()
+const prisma =new PrismaClient();
+dotenv.config()
+
+const PORT=process.env.PORT || 6000
 
 app.use(express.json())
 
@@ -9,6 +15,6 @@ app.get("/",(req,res)=>{
     res.send("Good")
 })
 
-app.listen(port,()=>{
-    console.log(`App Listening in port ${port}`);
+app.listen(PORT,()=>{
+    console.log(`App Listening in port ${PORT}`);
 })

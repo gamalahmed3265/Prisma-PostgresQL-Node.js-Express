@@ -1,6 +1,9 @@
 "# Prisma-PostgresQL-Node.js-Express" 
 
-
+# install
+```bash
+    npm i express nodemon dotenv
+```
 
 # Init Prisma Datasource Provider Postgresql
 ```bash
