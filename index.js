@@ -13,10 +13,10 @@ app.use(express.json())
 
 app.post("/",async(req,res)=>{
     
-    console.log(req.body);
     const {
         firstName,
         lastName,
+        email,
         age
     }=req.body;
 
@@ -24,6 +24,7 @@ app.post("/",async(req,res)=>{
         data:{
             firstName,
             lastName,
+            email,
             age:+age
         }
     })
@@ -100,6 +101,78 @@ app.delete("/:id",async(req,res)=>{
 
     }
 })
+
+
+
+
+app.post("/post",async(req,res)=>{
+    
+    const {
+        title,
+        authorId,
+    }=req.body;
+
+    const newPost=await prisma.post.create({
+        data:{
+            title,
+            authorId,
+            active:true,
+            data:null
+        },include:{
+            author:true
+        }
+    })
+    res.json({
+        message:"Post is Created",
+        post:newPost
+    });
+})
+app.post("/post/many",async(req,res)=>{
+
+    try {
+        const newPosts=await prisma.post.createMany({
+            data:req.body
+        })
+        res.json({
+            message:"Posts is Created",
+            post:newPosts
+        });
+    } catch (error) {
+        res.json({
+            message:error,
+            status:400
+        });
+    }
+})
+
+app.get("/post",async(req,res)=>{
+    try {
+        const allPost=await prisma.post.findMany({
+            where:{
+                title,
+                active,
+                data,
+                authorId
+            },
+            include:{
+                author:true
+            }
+        })
+        
+        res.json({
+            message:"Post is returned",
+            status:200,
+            posts:allPost
+        });
+        
+    } catch (error) {
+        res.json({
+            message:error,
+            status:400
+        });
+    }
+})
+
 
 app.listen(PORT,()=>{
     console.log(`App Listening in port ${PORT}`);
