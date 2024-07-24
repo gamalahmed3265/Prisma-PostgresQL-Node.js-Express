@@ -21,4 +21,19 @@ model User{
   age Int
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+
+  
+  writtenPosts Post[] @relation("writtenPosts")
+  favoritePost Post [] @relation("favoritePost") 
+}
+
+model Post{
+  id String @id @default(uuid())
+  title String
+  active Boolean
+  data Json
+  author User @relation("writtenPosts",fields: [authorId],references: [id])
+  authorId Int
+  favoriteBy User? @relation("favoritePost",fields:[favoriteId],references: [id])
+  favoriteId Int?
 }

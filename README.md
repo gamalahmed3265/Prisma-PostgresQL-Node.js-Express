@@ -25,3 +25,7 @@
 ```bash
     npx prisma migrate deploy
 ```
+# Run Project
+```bash
+    npm run dev
+```
